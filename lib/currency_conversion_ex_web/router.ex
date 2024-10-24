@@ -7,6 +7,8 @@ defmodule CurrencyConversionExWeb.Router do
 
   scope "/api", CurrencyConversionExWeb do
     pipe_through :api
+
+    post "/conversion", ConversionController, :create
   end
 
   # Enable LiveDashboard in development
