@@ -51,6 +51,7 @@ defmodule CurrencyConversionEx.MixProject do
       {:poison, "~> 6.0"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.18", only: :test},
+      {:ex_doc, "~> 0.31", only: :dev, runtime: false}
     ]
   end
 
