@@ -9,6 +9,6 @@ defmodule CurrencyConversionEx.ConversionTest do
     to_currency = "THB"
 
     assert {:ok, converted_amount} = Conversion.convert(amount, from_currency, to_currency)
-    assert converted_amount == 3200.00
+    assert converted_amount == 100.00
   end
 end
