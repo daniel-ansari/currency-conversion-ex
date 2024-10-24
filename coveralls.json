@@ -1,0 +1,16 @@
+{
+  "skip_files": [
+    "application.ex",
+    "channel_case.ex",
+    "conn_case.ex",
+    "currency_conversion_ex_web.ex",
+    "currency_conversion_ex.ex",
+    "endpoint.ex",
+    "router.ex",
+    "telemetry.ex",
+    "gettext.ex",
+    "views",
+
+    "lib/currency_conversion_ex/api/apilayer/exchange_rate.ex"
+  ]
+}

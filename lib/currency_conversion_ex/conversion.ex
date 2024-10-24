@@ -5,6 +5,27 @@ defmodule CurrencyConversionEx.Conversion do
   @exchange_api Application.compile_env(:currency_conversion_ex, :exchange_rate)[:api]
   @required_fields ["from_currency", "to_currency", "value"]
 
+  @doc """
+  Convert the given currencies based on exchange rates.
+
+  ## Examples
+
+      iex> CurrencyConversionEx.Conversion.convert_currency(%{
+          "from_currency" => "THB",
+          "to_currency" => "USD",
+          "value" => 20
+        }
+      )
+      {:ok,
+        %{
+          body: %{
+            converted_value: 0.59126,
+            conversion_rate: 0.029563
+          },
+          status_code: 200
+        }}
+
+  """
   def convert_currency(
         %{
           "from_currency" => from_currency,
