@@ -1,24 +1,24 @@
 defmodule CurrencyConversionExWeb.ConversionController do
+  @moduledoc """
+  The ConversionController handles currency conversion requests.
+  """
   use CurrencyConversionExWeb, :controller
 
   alias CurrencyConversionEx.Conversion
+  alias CurrencyConversionExWeb.{ConversionJSON, ErrorJSON}
 
-  def create(conn, %{"amount" => amount_str, "from_currency" => from_currency, "to_currency" => to_currency}) do
-    case Float.parse(amount_str) do
-      {amount, _} ->
-        case Conversion.convert(amount, from_currency, to_currency) do
-          {:ok, converted_amount} ->
-            formatted_amount = :erlang.float_to_binary(converted_amount, [decimals: 2]) # Format to 2 decimal places
-            json(conn, %{
-              converted_amount: formatted_amount
-            })
+  def create(conn, params) do
+    case Conversion.convert_currency(params) do
+      {:ok, %{body: body}} ->
+        conn
+        |> put_view(ConversionJSON)
+        |> render("conversion.json", conversion: body)
 
-          {:error, message} ->
-            json(conn, %{error: message})
-        end
-
-      :error ->
-        json(conn, %{error: "Invalid amount format"})
+      {:error, %{body: error_message, status_code: status_code}} ->
+        conn
+        |> put_status(status_code)
+        |> put_view(ErrorJSON)
+        |> render("#{status_code}.json", %{message: error_message})
     end
   end
 end
