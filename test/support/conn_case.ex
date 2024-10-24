@@ -28,6 +28,8 @@ defmodule CurrencyConversionExWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import CurrencyConversionExWeb.ConnCase
+
+      alias CurrencyConversionExWeb.Router.Helpers, as: Routes
     end
   end
 
