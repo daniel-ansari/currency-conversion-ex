@@ -2,7 +2,7 @@ defmodule CurrencyConversionEx.Conversion do
   @moduledoc """
   The Conversion context.
   """
-
+  @exchange_api Application.compile_env(:currency_conversion_ex, :exchange_rate)[:api]
   @required_fields ["from_currency", "to_currency", "value"]
 
   def convert_currency(
@@ -12,7 +12,7 @@ defmodule CurrencyConversionEx.Conversion do
           "value" => value
         } = _params
       ) do
-    with {:ok, response} <- CurrencyConversionEx.Api.Mock.ExchangeRate.fetch_rates(),
+    with {:ok, response} <- @exchange_api.fetch_rates(),
          {:ok, base_currency_exchange_rates} <-
            get_base_currency_exchange_rate(response["rates"], from_currency, to_currency),
          {:ok, converted_value} <-

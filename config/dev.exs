@@ -16,6 +16,7 @@ config :currency_conversion_ex, CurrencyConversionExWeb.Endpoint,
   secret_key_base: "emoM9lNBZbuKPAmJ06ZbFdZElMgdUrZqgJS4Byf9k/6stah9mcWMINI/qxaI7k+O",
   watchers: []
 
+config :currency_conversion_ex, :exchange_rate, api: CurrencyConversionEx.Api.Mock.ExchangeRate
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

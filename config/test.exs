@@ -7,6 +7,7 @@ config :currency_conversion_ex, CurrencyConversionExWeb.Endpoint,
   secret_key_base: "kRTxpsaBXhaA/YFQ48DymYFlu6kjpewIb1Jp5RjBha3bLJF65xhdMF3R+LBbr+uf",
   server: false
 
+config :currency_conversion_ex, :exchange_rate, api: CurrencyConversionEx.Api.Mock.ExchangeRate
 # Print only warnings and errors during test
 config :logger, level: :warning
 
