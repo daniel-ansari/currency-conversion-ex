@@ -48,6 +48,7 @@ defmodule CurrencyConversionEx.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:httpoison, "~> 2.2"},
+      {:poison, "~> 6.0"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:excoveralls, "~> 0.18", only: :test},
     ]
